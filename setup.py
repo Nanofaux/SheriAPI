@@ -23,7 +23,7 @@ with open('README.md', 'r', encoding='utf-8') as readme:
 
 setup(
     name='SheriAPI',
-    version='1.0.1',
+    version='0.9.1',
     description='A simple API wrapper to interact with the Sheri Blossom API.',
     long_description=long_description,
     long_description_content_type="text/markdown",

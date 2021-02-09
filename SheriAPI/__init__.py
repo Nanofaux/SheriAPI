@@ -12,7 +12,7 @@ __title__ = 'SheriAPI'
 __author__ = 'Nanofaux'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2021 Nanofaux'
-__version__ = '1.0.1'
+__version__ = '0.9.1'
 
 
 from .api import SheriAPI

@@ -1,4 +1,4 @@
-[THIS ISN'T RELEASED YET REE]
+[THIS ISN'T FINISHED YET REE]
 
 A simple API wrapper for Sheri Blossom (https://sheri.bot/)
 

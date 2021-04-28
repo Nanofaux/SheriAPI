@@ -1,5 +1,3 @@
-[THIS ISN'T FINISHED YET REE]
-
 A simple API wrapper for Sheri Blossom (https://sheri.bot/)
 
 The API provides several endpoints for free however some will require a unique token.

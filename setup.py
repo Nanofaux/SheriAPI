@@ -23,7 +23,7 @@ with open('README.md', 'r', encoding='utf-8') as readme:
 
 setup(
     name='SheriAPI',
-    version='0.9.1',
+    version='1.0.0',
     description='A simple API wrapper to interact with the Sheri Blossom API.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -32,7 +32,7 @@ setup(
     author_email='nanofaux@hotmail.com',
     license='MIT',
     classifiers=classifiers,
-    keywords='furry,SheriAPI,SheriAPI blossom,yiff,fur,discord',
+    keywords='furry,SheriAPI,sheri blossom,yiff,fur,discord',
     packages=find_packages(),
     install_requires=requirements,
     python_requires='>=3.6',

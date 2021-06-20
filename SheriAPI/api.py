@@ -32,7 +32,7 @@ import aiohttp
 from . import __version__
 from .endpoints import nsfw_endpoints, lookup, to_enum
 from .enums import _SharedEnum
-from .errors import InvalidToken, InvalidEndpoint, NSFWEndpointWithoutAllowNSFW
+from .errors import InvalidToken, InvalidEndpoint, NSFWEndpointWithoutAllowNSFW, SheriException
 
 logger = logging.getLogger('SheriAPI')
 USER_AGENT = "SheriAPI (https://github.com/Nanofaux/SheriAPI {0}) Python/{1[0]}.{1[1]} aiohttp/{2}".format(
@@ -161,13 +161,19 @@ class _APIHandler:
             url += f"?count={count}"
 
         async with self._session.get(url=url, headers=headers) as response:
-            if response.status in [401, 403]:
+            status = response.status
+            if status == 200:
+                json = await response.json()
+            elif status in [401, 403]:
                 # Documentation says it's a 403 but in testing it raises a 401 so :shrug:
                 raise InvalidToken
-            elif response.status == 404:
+            elif status == 404:
                 raise InvalidEndpoint(endpoint)
             else:
-                json = await response.json()
+                raise SheriException(
+                    "It looks like an unexpected error occurred when fetching your requested image:\n"
+                    f"Error {status}: {await response.text()}"
+                )
         try:
             if isinstance(json, list):
                 return [SheriResponse(endpoint, i, self._session) for i in json]

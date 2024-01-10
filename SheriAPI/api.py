@@ -30,7 +30,7 @@ from typing import Union, Any, List, Optional
 import aiohttp
 
 from . import __version__
-from .endpoints import nsfw_endpoints, lookup, to_enum
+from .endpoints import nsfw_endpoints, lookup, to_enum, free_endpoints
 from .enums import _SharedEnum
 from .errors import InvalidToken, InvalidEndpoint, NSFWEndpointWithoutAllowNSFW, SheriException
 
@@ -143,8 +143,11 @@ class _APIHandler:
             _endpoint = lookup(endpoint)
         else:
             _endpoint = str(endpoint).lower()
+
         if _endpoint in nsfw_endpoints and not self.allow_nsfw:
             raise NSFWEndpointWithoutAllowNSFW
+        elif _endpoint not in free_endpoints and self._token is None:
+            raise InvalidToken
 
         url = f"{self.API_URL}/{_endpoint}"
         headers = {"Accept": "application/json",

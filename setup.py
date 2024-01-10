@@ -23,11 +23,11 @@ with open('README.md', 'r', encoding='utf-8') as readme:
 
 setup(
     name='SheriAPI',
-    version='1.0.3',
+    version='1.0.4',
     description='A simple API wrapper to interact with the Sheri Blossom API.',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='',
+    url='https://github.com/Nanofaux/SheriAPI',
     author='Nanofaux',
     author_email='nanofaux@hotmail.com',
     license='MIT',
